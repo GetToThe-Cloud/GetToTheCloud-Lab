@@ -318,7 +318,7 @@ $nsg | Set-AzNetworkSecurityGroup -InformationAction SilentlyContinue | out-Null
 #vm extension
 $VMName = $DC
 $Pip = $VMName + "PublicIP"
-$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/TUT01-BuildingATestLab/main/Final/01-DC-SetupDomainController.ps1"
+$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/01-DC-SetupDomainController.ps1"
 $IP = (Get-AZPublicIPAddress -Name $Pip).IpAddress
 
 Write-Host "[INFO] Connecting to $($VMName) with IP $IP for installing Domain Controller"
@@ -341,7 +341,7 @@ Invoke-Command -Computername $IP -ScriptBlock {
 
 $VMName = $EX
 $Pip = $VMName + "PublicIP"
-$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/TUT01-BuildingATestLab/main/Final/02-EXC-DownloadExchange.ps1"
+$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/02-EXC-DownloadExchange.ps1"
 $IP = (Get-AZPublicIPAddress -Name $Pip).IpAddress
 Write-Host "[INFO] Connecting to $($VMName) with IP $IP for downloading Exchange software"
 
@@ -359,13 +359,13 @@ Invoke-Command -Computername $IP -ScriptBlock {
     $Script | Out-File C:\Temp\script.ps1
     powershell C:\temp\script.ps1
     Remove-Item C:\Temp\script.ps1 -force
-    $Download = (Invoke-WebRequest -uri "https://raw.githubusercontent.com/GetToThe-Cloud/TUT01-BuildingATestLab/main/Final/04-EXC-ConfigureExchange.ps1" -UseBasicParsing).Content
+    $Download = (Invoke-WebRequest -uri "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/04-EXC-ConfigureExchange.ps1" -UseBasicParsing).Content
     $Download | Out-File C:\ExchangeDownload\04-EXC-ConfigureExchange.ps1
 } -Credential $Credential -ArgumentList $fileUri
 
 $VMName = $EX
 $Pip = $VMName + "PublicIP"
-$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/TUT01-BuildingATestLab/main/Final/011-EXC-NetworkSettings.ps1"
+$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/011-EXC-NetworkSettings.ps1"
 $IP = (Get-AZPublicIPAddress -Name $Pip).IpAddress
 Write-Host "[INFO] Connecting to $($VMName) with IP $IP for setting Network Settings Exchange server"
 
@@ -391,7 +391,7 @@ Restart-AZVM -ResourceGroupName $ResourceGroupName -Name $VMName
 
 $VMName = $DC
 $Pip = $VMName + "PublicIP"
-$FileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/TUT01-BuildingATestLab/main/Final/03-DC-ConfigureActiveDirectory.ps1"
+$FileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/03-DC-ConfigureActiveDirectory.ps1"
 $IP = (Get-AZPublicIPAddress -Name $Pip).IpAddress
 
 Write-Host "[INFO] Connecting to $($VMName) with IP $IP for Creating Domain structure"
