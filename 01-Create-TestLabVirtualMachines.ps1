@@ -17,6 +17,7 @@ $DomainName = "GetToTheCloud.local"
 $Domain = $DomainName.Split(".")[0]
 $DomainUser = $domain + "\" + $Username
 $DomainCredential = New-Object -TypeName PSCredential -ArgumentList ($DomainUser, $Cred)
+$PSRemoteUri = "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/Set-PowershellRemoting.ps1"
 
 Write-Host "  ___       _   _____     _____  _           ___  _                _ "
 Write-Host " / __| ___ | |_|_   _|___|_   _|| |_   ___  / __|| | ___  _  _  __| |"
@@ -191,7 +192,7 @@ $nsg | Set-AzNetworkSecurityGroup -InformationAction SilentlyContinue | out-Null
 #vm extension
 
 Write-Host "[INFO] enabling Remote powershell to $($Vmname)"
-$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/00-BuildingTestLab/main/Set-PowerShellRemoting.ps1"
+$fileUri = $PSRemoteUri
 
 Add-ScriptExtension -FileUri $FileUri -VMName $VMName
 
@@ -260,7 +261,7 @@ $nsg | Set-AzNetworkSecurityGroup -InformationAction SilentlyContinue | out-Null
 #vm extension
 
 Write-Host "[INFO] enabling Remote powershell to $($Vmname)"
-$fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/00-BuildingTestLab/main/Set-PowerShellRemoting.ps1"
+$fileUri = $PSRemoteUri
 Add-ScriptExtension -FileUri $FileUri -VMName $VMName
 
 ## create windows 11 
