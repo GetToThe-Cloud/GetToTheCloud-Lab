@@ -87,7 +87,7 @@ Do {
 Until (!($Process))
 
 
-Write-Host "[SUCCESS] Framework48.exe is finished installing"
+Write-Host "[SUCCESS] Framework48.exe is finished installing" -ForegroundColor Green
 Write-Host ""
 Write-Host "[INFO] Waiting for IISRewrite to finish"
 Do {
@@ -97,7 +97,7 @@ Do {
 }
 Until (!($Process))
 
-Write-Host "[SUCCESS] IIS-Rewrite is finished installing"
+Write-Host "[SUCCESS] IIS-Rewrite is finished installing" -ForegroundColor Green
 Write-Host ""
 Write-Host "[INFO] Waiting for UcmaRuntime to finish"
 Do {
@@ -107,7 +107,7 @@ Do {
 }
 Until (!($Process))
 
-Write-Host "[SUCCESS] UcmaRuntimeSetup is finished installing"
+Write-Host "[SUCCESS] UcmaRuntimeSetup is finished installing" -ForegroundColor Green
 Write-Host ""
 Write-Host "Waiting for Visual C++ Redistributable Packages for Visual Studio to finish"
 Do {
@@ -117,7 +117,7 @@ Do {
 }
 Until (!($Process))
 
-Write-Host "[SUCCESS] vcredist_x64.exe is finished installing"
+Write-Host "[SUCCESS] vcredist_x64.exe is finished installing" -ForegroundColor Green
 Write-Host ""
 Write-Host "[INFO] Done downloading and installing Exchange Server PreRequisites"
 
