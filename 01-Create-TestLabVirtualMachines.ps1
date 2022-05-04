@@ -192,9 +192,7 @@ $nsg | Set-AzNetworkSecurityGroup -InformationAction SilentlyContinue | out-Null
 #vm extension
 
 Write-Host "[INFO] enabling Remote powershell to $($Vmname)"
-$fileUri = $PSRemoteUri
-
-Add-ScriptExtension -FileUri $FileUri -VMName $VMName
+Add-ScriptExtension -FileUri $PSRemoteUri -VMName $VMName
 
 ## create exchange server
 $ComputerName = "EX01"
@@ -261,8 +259,7 @@ $nsg | Set-AzNetworkSecurityGroup -InformationAction SilentlyContinue | out-Null
 #vm extension
 
 Write-Host "[INFO] enabling Remote powershell to $($Vmname)"
-$fileUri = $PSRemoteUri
-Add-ScriptExtension -FileUri $FileUri -VMName $VMName
+Add-ScriptExtension -FileUri $PSRemoteUri -VMName $VMName
 
 ## create windows 11 
 $ComputerName = "WIN11"
