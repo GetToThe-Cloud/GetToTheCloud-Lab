@@ -8,14 +8,19 @@ function Load-Module ($m) {
 
         # If module is not imported, but available on disk then import
         if (Get-Module -ListAvailable | Where-Object {$_.Name -eq $m}) {
-            Import-Module $m  -UseWindowsPowershell -SkipEditionCheck
+            if ($M -eq "MSOnline"){
+            Import-Module $m  -UseWindowsPowershell 
+            }
+            else {
+                Import-Module $m
+            }
         }
         else {
 
             # If module is not imported, not available on disk, but is in online gallery then install and import
             if (Find-Module -Name $m | Where-Object {$_.Name -eq $m}) {
                 Install-Module -Name $m -Force -Verbose -Scope CurrentUser
-                Import-Module $m -UseWindowsPowershell -SkipEditionCheck
+                Import-Module $m 
             }
             else {
 
