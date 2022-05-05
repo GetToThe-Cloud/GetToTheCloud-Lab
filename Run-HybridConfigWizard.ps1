@@ -25,6 +25,7 @@ If (!(Test-path $EdgePath)){
         Write-Host "[ERROR] Something went wrong downloading Microsoft Edge" -ForegroundColor Red
         break
     }
+    Write-Host "[INFO] Installing Microsoft Edge now ..."
     MsiExec.exe /i "$Outputfolder\$name" /qn
     Write-Host "[INFO] waiting for installation to complete"
     Do {
