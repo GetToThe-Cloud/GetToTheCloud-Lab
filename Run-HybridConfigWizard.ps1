@@ -26,28 +26,20 @@ If (!(Test-path $EdgePath)){
         break
     }
     MsiExec.exe /i "$Outputfolder\$name" /qn
-    
+    Write-Host "[INFO] waiting for installation to complete"
+    Do {
+        $Test = Test-Path $EdgePath
+    }
+    Until ($Test -eq $True)
+    Write-Host "[SUCCESS] Microsoft Edge is succesfully installed" -ForegroundColor Green
 }
 else {
     Write-Host "[INFO] Microsoft Edge is allready installed..."
 }
 
-
-
-
-
-
-
-
-
-
-MsiExec.exe /i MicrosoftEdgeEnterpriseX64.msi /qn
-https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/e4600c98-19d4-4707-8c4a-32d674a082c5/MicrosoftEdgeEnterpriseX64.msi
-
-
-
-
+Write-Host "[INFO] Enabling MRSProxy ...."
 Get-WebServicesVirtualDirectory -ADPropertiesOnly | Where {$_.MRSProxyEnabled -ne $true} | Set-WebServicesVirtualDirectory -MRSProxyEnabled $true
 
-Start-Process iexplore.exe https://aka.ms/HybridWizard
-Invoke-WebRequest -uri "https://aka.ms/HybridWizard" -OutFile "C:\ExchangeDownload\Microsoft.Online.CSE.Hybrid.Client.application"
+Write-Host "[INFO] Starting Hybrid Config Wizard ..."
+Start-Sleep 3
+Start-Process $EdgePath https://aka.ms/HybridWizard
