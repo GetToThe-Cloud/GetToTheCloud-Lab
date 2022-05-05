@@ -29,6 +29,7 @@ If (!(Test-path $EdgePath)){
     Write-Host "[INFO] waiting for installation to complete"
     Do {
         $Test = Test-Path $EdgePath
+        Start-Sleep 10
     }
     Until ($Test -eq $True)
     Write-Host "[SUCCESS] Microsoft Edge is succesfully installed" -ForegroundColor Green
