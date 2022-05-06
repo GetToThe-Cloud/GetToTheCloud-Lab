@@ -14,6 +14,9 @@ If (!(Get-Pssession | where-Object { $_.ConfigurationName -eq "Microsoft.Exchang
     break
 }
 
+Import-Module "C:\ExchangeDownload\GetToTheCloudFunctions.psm1"
+Disable-InternetExplorerESC 
+
 Write-Host "[INFO] Checking if Edge is allready installed ..."
 If (!(Test-path $EdgePath)){
     Write-Host "[WARNING] Edge is not yet installed... Downloading now" -ForegroundColor Yellow
@@ -40,9 +43,13 @@ else {
     Write-Host "[INFO] Microsoft Edge is allready installed..."
 }
 
+Write-Host "[INFO] Register .application to IEXPLORE.EXE"
+Register-FTA "C:\Program Files\internet explorer\iexplore.exe" .Application 
+
+
 Write-Host "[INFO] Enabling MRSProxy ...."
 Get-WebServicesVirtualDirectory -ADPropertiesOnly | Where {$_.MRSProxyEnabled -ne $true} | Set-WebServicesVirtualDirectory -MRSProxyEnabled $true
 
 Write-Host "[INFO] Starting Hybrid Config Wizard ..."
 Start-Sleep 3
-Start-Process $EdgePath https://aka.ms/HybridWizard
+Start-Process iexplore.exe https://aka.ms/HybridWizard
