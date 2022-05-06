@@ -369,6 +369,7 @@ $VMName = $EX
 $Pip = $VMName + "PublicIP"
 $fileUri = "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/011-EXC-NetworkSettings.ps1"
 $IP = (Get-AZPublicIPAddress -Name $Pip).IpAddress
+$EXIP = $IP
 Write-Host "[INFO] Connecting to $($VMName) with IP $IP for setting Network Settings Exchange server"
 
 Invoke-Command -Computername $IP -ScriptBlock {
@@ -484,6 +485,6 @@ Write-Host "-EX01 internal IP: 10.10.0.5"
 Write-Host "-WIN11 internal IP: 10.10.0.6"
 Write-Host ""
 Write-Host "Open ports for EX01: 25,80,443"
-Write-Host "IP to use for External DNS: $IP"
+Write-Host "IP to use for External DNS: $EXIP"
 Write-Host ""
 Write-Host ""
