@@ -41,3 +41,14 @@ Write-Host "[INFO] Installing Active Directory"
 Import-Module ADDSDeployment
 Install-ADDSForest -CreateDnsDelegation:$false -SafeModeAdministratorPassword $DomainRecovery -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "$DomainName" -DomainNetbiosName "$NetBiosName" -ForestMode "WinThreshold" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true  | out-Null
 Write-Host "[SUCCESS] Active Directory Installed for domain $DOmainName" 
+
+# Do {
+#     $check = (Get-Service ADWS).Status
+#     Write-Host "Waiting for ADWS Services to be running"
+#     Start-Sleep 2
+    
+#     }
+#     until (
+#     (Get-Service ADWS).Status -eq "running"
+#     )
+     
