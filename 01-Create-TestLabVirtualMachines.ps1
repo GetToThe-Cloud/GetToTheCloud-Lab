@@ -363,6 +363,8 @@ Invoke-Command -Computername $IP -ScriptBlock {
     $Download | Out-File C:\ExchangeDownload\Replace-OAuthCertificate.ps1
     $Download = (Invoke-WebRequest -uri "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/Scripts/Run-HybridConfigWizard.ps1" -UseBasicParsing).Content
     $Download | Out-File C:\ExchangeDownload\Run-HybridConfigWizard.ps1
+    $Download = (Invoke-WebRequest -uri "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/Scripts/GetToTheCloudFunctions.psm1" -UseBasicParsing).Content
+    $Download | Out-File C:\ExchangeDownload\GetToTheCloudFunctions.psm1
 } -Credential $Credential -ArgumentList $fileUri
 
 $VMName = $EX
