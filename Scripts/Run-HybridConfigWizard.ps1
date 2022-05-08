@@ -14,7 +14,10 @@ If (!(Get-Pssession | where-Object { $_.ConfigurationName -eq "Microsoft.Exchang
     break
 }
 
-Import-Module "C:\ExchangeDownload\GetToTheCloudFunctions.psm1"
+$ModuleFile = "$ENV:TEMP\GetToTheCloud.psm1"
+$Module = (Invoke-WebRequest -uri "https://raw.githubusercontent.com/GetToThe-Cloud/GetToTheCloud-Lab/main/Scripts/GetToTheCloudFunctions.psm1" -UseBasicParsing).Content | Out-File $ModuleFile
+Import-Module $ModuleFile
+
 Disable-InternetExplorerESC 
 
 Write-Host "[INFO] Checking if Edge is allready installed ..."
