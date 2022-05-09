@@ -42,7 +42,7 @@ $CheckifModuleExist = Get-InstalledModule | Where-Object {$_.name -eq "AZ"}
 if (!($CheckifModuleExist)) {
     Write-Host "[WARNING] installing powershell module AZ" -ForegroundColor Yellow
     Try {
-        #Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+        Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
         Write-Host "[SUCCESS] powershell module is installed" -ForegroundColor green
     }
     catch {
