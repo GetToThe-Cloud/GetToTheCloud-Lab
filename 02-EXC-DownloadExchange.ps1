@@ -19,8 +19,8 @@ $TLS12Protocol = [System.Net.SecurityProtocolType] 'Ssl3 , Tls12'
 
 ## download latest CU Exchange Server 2019
 Write-Host "[INFO] Downloading Exchange Server 2019 CU11"
-#Invoke-WebRequest -Uri "https://download.microsoft.com/download/b/c/7/bc766694-8398-4258-8e1e-ce4ddb9b3f7d/ExchangeServer2019-x64-CU12.ISO" -OutFile "$OutputFolder\Exchange2019-Latest.iso"
-Invoke-WebRequest -Uri "https://gettothecloudcourses.blob.core.windows.net/exchange/ExchangeServer2019-x64-CU11.ISO" -OutFile "$Outputfolder\Exchange2019-Latest.iso"
+Invoke-WebRequest -Uri "https://download.microsoft.com/download/8/d/2/8d2d01b4-5bbb-4726-87da-0e331bc2b76f/ExchangeServer2016-x64-CU23.ISO" -OutFile "$OutputFolder\Exchange2019-Latest.iso"
+#Invoke-WebRequest -Uri "https://gettothecloudcourses.blob.core.windows.net/exchange/ExchangeServer2019-x64-CU11.ISO" -OutFile "$Outputfolder\Exchange2019-Latest.iso"
 
 ## download .NET Framework 4.8
 Write-Host "[INFO] Downloading .NET Framework 4.8"

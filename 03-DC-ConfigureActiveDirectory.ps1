@@ -89,7 +89,7 @@ $Users = "35"
 
 Write-Host ""
 
-$OUPath = $DomainPersonUsers
+$OUPath = $DomainPersonUsersbhy
 Write-Host "Creating $Users Users in $($OUPath)"
 
 $i = 1

@@ -13,7 +13,7 @@ $Username = "LabAdmin"
 $Password = "Welkom01!!"
 $Cred = $Password | ConvertTo-SecureString -Force -AsPlainText
 $Credential = New-Object -TypeName PSCredential -ArgumentList ($Username, $Cred)
-$DomainName = "GetToTheCloud.local"
+$DomainName = "TestDomain.local"
 $Domain = $DomainName.Split(".")[0]
 $DomainUser = $domain + "\" + $Username
 $DomainCredential = New-Object -TypeName PSCredential -ArgumentList ($DomainUser, $Cred)
@@ -60,9 +60,9 @@ Connect-AzAccount -InformationAction SilentlyContinue | out-Null
 
 ## creating network
 $LocationName = "westeurope"
-$ResourceGroupName = "GetToTheCloudTestLab"
+$ResourceGroupName = "TestDomain"
 $VMSize = "Standard_B2s"
-$NetworkName = "GetToTheCloud-TestLab"
+$NetworkName = "TestDomain-TestLab"
 $SubnetName = "TestLab"
 $SubnetAddressPrefix = "10.10.0.0/24"
 $VnetAddressPrefix = "10.10.0.0/24"
@@ -195,8 +195,8 @@ Write-Host "[INFO] enabling Remote powershell to $($Vmname)"
 Add-ScriptExtension -FileUri $PSRemoteUri -VMName $VMName
 
 ## create exchange server
-$ComputerName = "EX01"
-$VMName = "EX01"
+$ComputerName = "AD01"
+$VMName = "AD01"
 $VMSize = "Standard_B2ms"
 $EX = $VMname
 $PublisherName = "MicrosoftWindowsServer"
@@ -483,7 +483,7 @@ Write-Host "Deployment was started at $TimeStart"
 write-Host "Deployment was finished at $EndTime"
 Write-Host ""
 Write-host "-DC01 internal IP: 10.10.0.4"
-Write-Host "-EX01 internal IP: 10.10.0.5"
+Write-Host "-AD01 internal IP: 10.10.0.5"
 Write-Host "-WIN11 internal IP: 10.10.0.6"
 Write-Host ""
 Write-Host "Open ports for EX01: 25,80,443"
